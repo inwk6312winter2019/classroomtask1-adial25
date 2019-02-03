@@ -1,0 +1,55 @@
+1)def sed(pattern_str, replacement_str, f1, f2):
+    try:
+        fin = open(f1)
+        lines = fin.readlines()
+
+        n = open(f2, 'w')
+
+        for line in lines:
+            n = line.replace(pattern_str, replacement_str)
+            n.write(new_line)
+
+        n.close()
+
+    except:
+        print "this is Error."
+
+
+
+2)
+from downey_anagram import *
+import shelve
+
+def store_anagrams(f, an):
+    anagram_dict = all_anagrams(an)
+    a = shelve.open(filen)
+    for key in anagram_dict.keys():
+        a[key] = anagram_dict[key]
+    a.close()
+def read_anagrams(f, a_word):
+    a = shelve.open(file)
+    sig = signature(a_word)
+    return a[sig]
+
+
+3)
+import os
+def get_mp3_files(d):
+    mp3_files = []
+    for root, dirs, files in os.walk(d):
+        for f in files:
+            if f[-4:] == ".mp3":
+                mp3_files.append(os.path.join(root, f))
+    return mp3_files
+def check_duplicates(list_files):
+    checksum_dict = {}
+   for a_file in list_files:
+        checksum = os.open('md5sum ' + a_file)
+        res = checksum.read()
+        checksum.close()
+
+        if res in checksum_dict:
+            print "There's a duplicate!"
+            print a_file + " \ " + checksum_dict[res]
+        else:
+            checksum_dict[res] = a_file
